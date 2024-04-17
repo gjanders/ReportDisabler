@@ -33,8 +33,11 @@ If this were a non-default Splunk app you could simply override the disabled fla
 If you see an error such as:
 `Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1106)')))`
 
+Or the entry in the logs of:
+`failed due to SSLError, you may need to set verify=False`
+
 This simply means that the port 8089 is running an SSL certificate that is not trusted by the default certificate store in use by Splunk's python
-You can change `verify=True` to `verify=False` in the config files this will bypass SSL validation of your local Splunk instance on port 8089 (note that this comes with a minor security risk)
+You can change `verify=True` to `verify=False` in the bin/report_disabler.py file and this will bypass SSL validation of your local Splunk instance on port 8089 (note that this comes with a minor security risk)
 
 ## Feedback?
 Feel free to open an issue on github or use the contact author on the SplunkBase link and I will try to get back to you when possible, thanks!
@@ -43,5 +46,8 @@ Feel free to open an issue on github or use the contact author on the SplunkBase
 Icons by Bing CoPilot
 
 ## Release Notes
+### 0.0.2
+Updated code to throw an error if the call fails due to an SSL certificate issue
+
 ### 0.0.1
 Initial version

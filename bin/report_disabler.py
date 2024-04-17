@@ -59,8 +59,15 @@ class ReportDisabler(smi.Script):
         headers = {"Authorization": "Splunk " + self.service.token }
 
         #Verify=false is hardcoded to workaround local SSL issues
-        shc_check_url = 'https://localhost:8089/services/shcluster/captain/info?output_mode=json'
-        res = requests.get(shc_check_url, headers=headers, verify=True)
+        shc_check_url = "https://localhost:8089/services/shcluster/captain/info?output_mode=json"
+        logger.debug(f"Attempting to call url={shc_check_url} headers={headers}")
+
+        try:
+            res = requests.get(shc_check_url, headers=headers, verify=True)
+        except requests.exceptions.SSLError:
+            logger.error(f"requests.get call to url={shc_check_url} failed due to SSLError, you may need to set verify=False")
+            return 
+
         if (res.status_code == 503):
             logger.debug("Non-shcluster / standalone instance, safe to run on this node")
         elif (res.status_code != requests.codes.ok):
@@ -74,7 +81,7 @@ class ReportDisabler(smi.Script):
                 return
             else:
                 logger.info("On the captain node of an SHC, running")
-        
+ 
         for input_name, input_item in list(inputs.inputs.items()):
             # Get fields from the InputDefinition object
             report_name = input_item["report_name"]
@@ -118,4 +125,3 @@ class ReportDisabler(smi.Script):
 if __name__ == "__main__":
     exitcode = ReportDisabler().run(sys.argv)
     sys.exit(exitcode)
-
