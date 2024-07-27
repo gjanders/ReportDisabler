@@ -40,7 +40,7 @@ This simply means that the port 8089 is running an SSL certificate that is not t
 You can change `verify=True` to `verify=False` in the bin/report_disabler.py file and this will bypass SSL validation of your local Splunk instance on port 8089 (note that this comes with a minor security risk)
 
 ## Feedback?
-Feel free to open an issue on github or use the contact author on the SplunkBase link and I will try to get back to you when possible, thanks!
+Feel free to open an issue on github or use the contact author on the [SplunkBase link](https://splunkbase.splunk.com/app/7314) and I will try to get back to you when possible, thanks!
 
 ## Other
 Icons by Bing CoPilot
