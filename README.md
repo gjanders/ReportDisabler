@@ -46,6 +46,9 @@ Feel free to open an issue on github or use the contact author on the [SplunkBas
 Icons by Bing CoPilot
 
 ## Release Notes
+### 0.0.5
+Updated `report_disabler.py` to correctly use the schema (no functional changes, UI input will have correct description text now) 
+
 ### 0.0.4
 Updated Splunk python SDK from 2.0.2 to 2.1.0 as per Splunk cloud compatibility requirements
 

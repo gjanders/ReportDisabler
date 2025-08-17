@@ -25,12 +25,14 @@ class ReportDisabler(smi.Script):
         report_name.required_on_edit = True
         report_name.required_on_create = True
         report_name.description = "Name of the report to be disabled"
+        scheme.add_argument(report_name)
 
         app_name = Argument("app")
         app_name.data_type = Argument.data_type_string
         app_name.required_on_edit = True
         app_name.required_on_create = True
         app_name.description = "Name of the app where the report exists"
+        scheme.add_argument(app_name)
 
         return scheme
 
