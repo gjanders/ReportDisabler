@@ -46,8 +46,13 @@ Feel free to open an issue on github or use the contact author on the [SplunkBas
 Icons by Bing CoPilot
 
 ## Release Notes
-### 0.0.6
+### 0.0.7
 Adding python.required in `inputs.conf` as requested by splunkbase, this is supported in 10.2 and above. Harmless warning messages may occur on older Splunk versions.
+
+Updated Splunk python SDK to 2.1.1
+
+### 0.0.6
+Removed from splunkbase, typo in the python.required setting (and this was the only update), replaced by 0.0.8
 
 ### 0.0.5
 Updated `report_disabler.py` to correctly use the schema (no functional changes, UI input will have correct description text now) 
